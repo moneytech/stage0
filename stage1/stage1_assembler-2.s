@@ -28,8 +28,10 @@
 	;; We will be using R12 for holding our nybble
 	;; We will be using R13 for our register size in bytes
 	;; We will be using R14 for our head-node
-	LOADUI R15 $stack           ; We will be using R15 for our stack
-
+	LOADUI R15 0x400           ; We will be using R15 for our stack
+	;; should be $stack but hex1 doesn't support absolute addressing and that
+	;; number is past the end of program (by a small margin)
+	;; otherwise we overwrite end of the program with stack pushes
 
 ;; Main program functionality
 ;; Reads in Tape_01 and writes out results onto Tape_02
@@ -323,7 +325,7 @@
 
 
 ;; Our simple string compare function
-;; Recieves two pointers in R0 and R1
+;; Receives two pointers in R0 and R1
 ;; Returns the difference between the strings in R0
 ;; Returns to whatever called it
 :strcmp
@@ -354,7 +356,7 @@
 
 
 ;; Processimmediate Function
-;; Recieves an integer value in R0
+;; Receives an integer value in R0
 ;; Writes out the values to Tape_02
 ;; Doesn't modify registers
 ;; Returns to whatever called it
@@ -488,6 +490,6 @@
 	TRUE R0
 	RET R15
 
-
 ;; Where we will putting our stack
+;; not actually used because hex1 doesn't support absolute addresses
 :stack

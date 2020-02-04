@@ -32,7 +32,7 @@ Which only have the goal of creating a bootstrapping path to a C compiler capabl
 compiling GCC, with only the explicit requirement of a single 1 KByte binary or less.
 
 Additionally, all code must be able to be understood by 70% of the population of programmers.
-If the code can not be understood by that volume, it needs to be altered until it satifies the above requirement.
+If the code can not be understood by that volume, it needs to be altered until it satisfies the above requirement.
 
 * Also found within
 This repo contains a few of my false start pieces that may be of interest to people who
@@ -47,6 +47,8 @@ In order to build stage0 and all the pieces, one only needs to run make all.
 Each individual piece can be built by simply running make $piece with $piece being replaced by the actual part you want to make.
 
 The only pieces that have any external dependencies are the Web IDE (Python3+CherryPy), libvm (GCC) and vm (GCC+GNU getopt)
+Those wishing to work in Python, please checkout https://github.com/markjenkins/knightpies
+He does an amazing job
 
 * Future
 ** Software
@@ -85,7 +87,7 @@ Its functionality is reduced compared to the stage0 monitor simply because it
 only performs half of the required functions; that of generating binaries from
 hex0 source files.
 
-It most important features of note are:
+Its most important features of note are:
 ; line comments and
 # line comments
 As careful notes are essential for this stage.
@@ -99,7 +101,7 @@ Further because of the mescc-tools standardization of syntax @label indicates a
 16bit relative displacement.
 
 Alternative architectures porting this need not limit themselves to 16bit
-displacements should they so choose, rather they must provide atleast 1 size
+displacements should they so choose, rather they must provide at least 1 size
 of displacement or if they so desire, they may skip and write their Hex2
 assembler in Hex0 but as it is a much larger program, I recommend against it.
 
@@ -130,10 +132,10 @@ definition)
 2) "Raw strings" allow every character except " as there is no support for
 string escapes, including NULL; which are converted to Hex chars for Hex2
 To convert back to the chars inside of the "quotes" with the addition of a
-trailing NULL character or the number desired (Must be atleast 1, no upper
-bound) and restrictions such as padding to word boundries are accetpable.
-3) 'Raw char strings' will passing anything inside of them (except ' which
-termininates the string).
+trailing NULL character or the number desired (Must be at least 1, no upper
+bound) and restrictions such as padding to word boundaries are acceptable.
+3) 'Raw char strings' will be passing anything inside of them (except ' which
+terminates the string).
 
 Thus by combining :label, @label, DEFINE SYSCALL 0F05, Raw strings and chars;
 one has created a rather flexible and powerful Assembler capable of building
@@ -151,7 +153,7 @@ the time and effort was put forth by Caleb and Jeremiah to provide a framework
 for those people to contribute immediately; thus the FORTH was born.
 
 Several efforts were taken to make the FORTH more standard but ultimately it was
-determined, Assembly was preferable as the underlaying architecture wasn't total
+determined, Assembly was preferable as the underlying architecture wasn't total
 garbage.
 
 It now sits waiting for any FORTH programmer who wishes to prove FORTH is a real
@@ -181,7 +183,7 @@ functional M2-Planet level C compiler, FORTH and a Minimal Garbage collecting
 Lisp and can be used to build more advanced tools that can be used in
 bootstrapping whole operating systems with modern tool stacks.
 
-*** inital_library
+*** initial_library
 A library collection of very useful FORTH functionality designed to make the
 lives of any FORTH programmer easier.
 
@@ -215,3 +217,13 @@ on x86 and thus verify software builds for hardware one does not even have.
 *** M2-Planet_x86
 The x86 port of the M2-Planet C compiler v1.0 used as one of the paths in
 bootstrapping M2-Planet on x86 hardware.
+
+* Inspirations
+This work wouldn't have come so far without the inspirational work of others
+They are in alphabetical order of the Author's last names
+
+GRIMLEY EVANS, Edmund - bcompiler [http://homepage.ntlworld.com/edmund.grimley-evans/bcompiler.html] :: The inspiration for hex0, hex1 and hex2
+GRIMLEY EVANS, Edmund - cc500 [http://homepage.ntlworld.com/edmund.grimley-evans/cc500] :: The inspiration for M2-Planet
+Jones, Richard W.M. - jonesforth [http://git.annexia.org/?p=jonesforth.git] :: The inspiration for stage2 FORTH and initial_library
+Piner, Steve and Deutsch, L. Peter - Expensive Typewriter [http://archive.computerhistory.org/resources/text/DEC/pdp-1/DEC.pdp_1.1972.102650079.pdf] :: The inspiration for SET
+kragensitaker - The Monitor [https://old.reddit.com/r/programming/comments/9x15g/programming_thought_experiment_stuck_in_a_room/c0ewj2c/] :: The inspiration for the hex0-monitor
